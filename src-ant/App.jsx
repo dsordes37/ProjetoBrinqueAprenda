@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, HashRouter, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Games from "./pages/Games.jsx";
 import Abaco from "./jogos/2025.1/AbacoMania/Abaco.jsx";
@@ -16,7 +16,7 @@ import Sobre from './pages/Sobre.jsx'
 
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <HashRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jogos" element={<Games />} />
@@ -32,7 +32,7 @@ function App() {
         <Route path="/palavrasmagicas" element={<PalavrasMagicas />} />
         <Route path="/sobre" element={<Sobre />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
