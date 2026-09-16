@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Catalog from './pages/catalog/Catalog';
 import GamePage from './pages/gamePage/GamePage';
@@ -11,7 +11,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop></ScrollToTop>
       <header>
 
@@ -36,7 +36,7 @@ function App() {
 
       <Footer></Footer>
 
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
