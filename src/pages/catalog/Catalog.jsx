@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ProjectThumb from '../../components/projectThumb/ProjectThumb';
 import './Catalog.css';
-import { getAssetUrl, JOGOS_DATA } from '../../data/jogos';
+import { JOGOS_DATA } from '../../data/jogos';
 
 export default function Catalog() {
 
@@ -24,7 +24,7 @@ export default function Catalog() {
           </Link>
         </div>
         <div className="capa-image-container">
-          <img src={getAssetUrl(jogoAleatorio.imagem)} alt={jogoAleatorio.titulo} />
+          <img src={jogoAleatorio.imagem} alt={jogoAleatorio.titulo} />
         </div>
       </section>
 

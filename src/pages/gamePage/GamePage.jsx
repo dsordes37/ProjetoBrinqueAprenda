@@ -1,19 +1,19 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './GamePage.css';
-import { getAssetUrl, JOGOS_DATA } from '../../data/jogos';
+import { JOGOS_DATA } from '../../data/jogos';
+
+
 
 export default function GamePage() {
   const { ano, id } = useParams()
   const navigate = useNavigate();
 
-  const listaJogo = JOGOS_DATA.find((lista) => String(lista.ano) === String(ano));
-  const jogo = listaJogo?.projetos?.[parseInt(id, 10)];
+  
 
-  if (!jogo) {
-    navigate('/catalog', { replace: true });
-    return null;
-  }
+  const jogo = JOGOS_DATA.find(lista=>lista.ano==ano).projetos[parseInt(id)];
+
+  console.log(jogo)
 
   return (
     <main id="gamePageContainer">
@@ -33,7 +33,7 @@ export default function GamePage() {
             <p className="game-subtitle"><strong>{jogo.subtitulo}</strong> {jogo.sinopse}</p>
             
             
-            <a href={jogo.url} target='_blank' rel="noreferrer">
+            <a href={jogo.url} target='_blank'>
               <button className="btn-play-now btn-primary">
                 <span className="play-icon">▶</span> Jogue Agora!
               </button>
@@ -42,7 +42,7 @@ export default function GamePage() {
 
           <div className="hero-image-side">
             <div className="game-cover-wrapper">
-              <img src={getAssetUrl(jogo.imagem)} alt={jogo.titulo} />
+              <img src={jogo.imagem} alt={jogo.titulo} />
             </div>
           </div>
 
@@ -62,7 +62,7 @@ export default function GamePage() {
 
           <div className="tech-badges-row">
             {jogo.habilidades.map((h)=>(
-              <span key={h} className="tech-badge badge-blue">{h}</span>
+              <span className="tech-badge badge-blue">{h}</span>
             ))}
 
           </div>
@@ -81,7 +81,7 @@ export default function GamePage() {
             <div className="features-grid">
 
               {jogo.caracteristicas.map((c) =>(
-                <div key={c.titulo} className="feature-card">
+                <div className="feature-card">
                   <div className="feature-icon-circle circle-yellow">{c.icon}</div>
                   <h3>{c.titulo}</h3>
                   <p>{c.descricao}</p>
@@ -103,7 +103,7 @@ export default function GamePage() {
               <h2 className="section-title">Criado por Universitários Extraordinários</h2>
               <div className="developers-grid">
                 {jogo.desenvolvedores.map((dev, index) => (
-                  <div key={`${dev}-${index}`} className="developer-card">
+                  <div key={index} className="developer-card">
                     <div className="developer-avatar-circle">🎓</div>
                     <h3>{dev}</h3>
                   </div>
