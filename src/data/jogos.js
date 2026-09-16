@@ -1,3 +1,9 @@
+export const getAssetUrl = (path = '') => {
+    if (!path) return path;
+    const normalized = path.startsWith('/') ? path.slice(1) : path;
+    return `${import.meta.env.BASE_URL}${normalized}`;
+};
+
 export const JOGOS_DATA = [
     {
         ano: 2025.1,

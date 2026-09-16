@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Catalog from './pages/catalog/Catalog';
@@ -8,25 +7,21 @@ import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <HashRouter>
-      <ScrollToTop></ScrollToTop>
+      <ScrollToTop />
       <header>
-
-      <Link to="/">
+        <Link to="/">
           <img style={{ width: '100px' }} src="https://brinqueaprenda.com.br/assets/logo-portal-prime-CL_c3ozH.png" alt="" />
-      </Link>
+        </Link>
 
-      <nav style={{ display: 'flex', gap: '10px', alignItems:"center" }}>
+        <nav style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <Link to="/">Início</Link>
           <Link to="/catalog">
             <button className="btn-primary">Nossos Jogos!</button>
           </Link>
-      </nav>
+        </nav>
       </header>
-      
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,8 +29,7 @@ function App() {
         <Route path="/catalog" element={<Catalog />} />
       </Routes>
 
-      <Footer></Footer>
-
+      <Footer />
     </HashRouter>
   )
 }
