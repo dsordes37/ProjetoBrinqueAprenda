@@ -1,0 +1,30 @@
+#about{
+    background-color: var(--color3);
+    color: var(--color2);
+    position: relative;
+}#about p{
+    text-align: justify;
+    display: flex;
+    max-width: 100%;
+}#descriptionWraper{
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+
+
+#about .onda-path {
+  fill: var(--color3); 
+}
+
+
+@media (max-width: 1200px) {
+  #descriptionWraper{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }#descriptionWraper>img{
+    max-width: 500px;
+  }
+}

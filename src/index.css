@@ -1,370 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --color1: #faf0ff;
+  --color2: rgb(0, 14, 68);
+  --color3: #ffb835;
+  --color4: #eef5fc;
+  --color5: #fafafa;
+  --color6: #5a6782;
+  --color7: #b58953;
+  
+
+
+  --border: #e5e4e7;
+
+  --code-bg: #f4f3ec;
+  --accent: lch(50.94% 107.19 314.36);
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(120, 103, 133, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: Quicksand, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: Fredoka ,system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png', Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  font-weight: 500;
+  letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color2);
+  background: var(--color3);
+  background-image: var(--color3);
+  background-attachment: fixed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-* {
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}*{
+  margin: 0;
   padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
+}
+h1, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading);
+  line-height: 1.1;
 }
 
-body {
-  padding: 0px;
-  margin: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-image: url("./assets/background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow-x: hidden;
+h1 span{
+  color: var(--color3);
+}
+h1{
+  font-size: clamp(2.5rem, 7vw, 7rem);
+  
+}h2{
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
-.backSobre {
-  padding: 0px;
-  margin: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: #1c1c3c;
-}
-
-.header {
-  background-color: white;
-  width: 100%;
-  height: 100px;
-  padding: 0px 10px;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.authors {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-img:nth-child(1) {
-  width: 200px;
-  height: 100%;
-}
-
-img {
-  width: 130px;
-  height: 100%;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 15px;
-  min-height: calc(100vh - 75px);
-}
-
-.cards {
-  width: 100%;
-  max-width: 1440px;
-  min-height: 600px;
-  background: linear-gradient(to bottom, #ffffff, #cfe3ff);
-  border: 4px solid #ffdc5d;
-  border-radius: 10px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Cada turma e uma secao com o semestre no topo e os jogos daquele semestre. */
-.turma-titulo {
-  font-family: "Luckiest Guy", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: #2d4a89;
-  padding-bottom: 10px;
-  margin-bottom: 25px;
-  border-bottom: 3px solid #ffdc5d;
-}
-
-/* auto-fit no lugar de um numero fixo de colunas: a grade se ajusta sozinha
-   conforme os jogos vao entrando, sem precisar mexer nas media queries. */
-.turma-jogos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  width: 100%;
-  aspect-ratio: 1.3/1;
-  max-width: 420px;
-  background-color: #2d4a89;
-  border-radius: 8px;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-/* width e height vao explicitos aqui de proposito: as regras globais `img` e
-   `img:nth-child(1)` acima valem para o site inteiro e tambem pegam a imagem do
-   card. Sem isso, a capa herda a altura delas e a proporcao fica a cargo do
-   acaso. Os valores reproduzem o tamanho que os cards ja tinham. */
-.card-image {
-  flex-grow: 1;
-  width: 90%;
-  height: 90%;
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: cover;
-  background-color: #093372;
-  display: block;
-}
-
-/* Para capas em faixa, como o logo do MathRace: mostra a imagem inteira sobre o
-   fundo do card em vez de cortar as laterais. */
-.card-image-contain {
-  object-fit: contain;
-  background-color: transparent;
-}
-
-.game-container {
-  background-color: whitesmoke;
-  width: 70%;
-  max-width: 800px;
-  height: 500px;
-  border: 3px solid #fadc6dff;
-  border-radius: 10px;
+section{
+  padding: 2rem 3rem 3rem;
 }
 
 
-.digitacao-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-
-.game-container-D {
-  max-width: 1800px;
-  max-height: 1000px;
-  background-image: url('./jogos/JogoDigitacao/game_assets/blackboard-clipart.svg');
-  width: 970px; 
-  min-width: 320px;
-  height: 650px; /* Ocupa 90% da altura da tela */
-  min-height: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5 rem;
-  background-color: #0b3d0b; /* Verde escuro tipo lousa */
-  padding: 20px;
-  padding-bottom: 100px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.onda-divider {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-   background-repeat: no-repeat;      /* para não repetir */
-  background-size: cover;            /* para cobrir o container */
-  background-position: center;
-  
-}
-
-
-@media (max-width: 1024px) {
-  .container {
-    padding: 20px 15px;
-  }
-  
-  .cards {
-    padding: 30px;
-    gap: 30px;
-  }
-  
-  .header {
-    height: 60px;
-    padding: 0px 8px;
-  }
-  
-  .authors {
-    width: 160px;
-  }
-  
-  img:nth-child(1) {
-    width: 120px;
-  }
-  
-  img {
-    width: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-  
-  .container {
-    padding: 15px 10px;
-  }
-  
-  .cards {
-    padding: 20px;
-    gap: 30px;
-    max-width: none;
-    margin: 0 10px;
-  }
-
-  .turma-titulo {
-    font-size: 1.6rem;
-    margin-bottom: 18px;
-  }
-
-  .turma-jogos {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .card {
-    max-width: none;
-    aspect-ratio: 1.5/1;
-  }
-  
-  .header {
-    height: 50px;
-    padding: 0px 5px;
-    flex-wrap: wrap;
-  }
-  
-  .authors {
-    width: 140px;
-  }
-  
-  img:nth-child(1) {
-    width: 100px;
-  }
-  
-  img {
-    width: 80px;
-  }
-  
-  .game-container {
-    width: 90%;
-    height: 400px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px 5px;
-  }
-  
-  .cards {
-    padding: 15px;
-    gap: 25px;
-    border-width: 2px;
-  }
-
-  .turma-titulo {
-    font-size: 1.4rem;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-  }
-
-  .turma-jogos {
-    gap: 15px;
-  }
-  
-  .card {
-    aspect-ratio: 1.6/1;
-  }
-  
-  .header {
-    height: 45px;
-  }
-  
-  .authors {
-    width: 120px;
-  }
-  
-  img:nth-child(1) {
-    width: 80px;
-  }
-  
-  img {
-    width: 60px;
-  }
-  
-  .game-container {
-    width: 95%;
-    height: 350px;
-  }
-}
-
-#sobrecreditos{
-  font-size: 30px;
-  color: #ffffff;
-  text-align: center;
-  padding-top: 30px;
-  transform: translateX(15px);
-}
-
-#textsobre1{
-  font-size: 20px;
-  color: #ffffff;
-  position: relative;
-  text-align: justify;
-  text-justify: inter-word;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
-  transform: translateX(15px);
-}
-
-.backSobre{
+  top: -75px;
+  left: 0;
   width: 100%;
-  min-height: 100vh;
-  background-image: url("src/assets/background-sobre.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow-x: hidden;
+  overflow: hidden;
+  line-height: 0;
 }
 
-#sobrecontainer{
+.onda-divider svg {
   position: relative;
-  flex: content;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1440px;
-  min-height: 100vh;
-  background-color: #06162e;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow-x: hidden;
+  display: block;
+  width: 100%;
+  height: 80px; /* Controle a altura da onda aqui */
 }
 
-#listcredito{
-  margin-left: 60px;
+button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary{
+  background-color: var(--color3);
+  color: var(--color1);
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 184, 52, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 184, 52, 0.4);
+  }
+}
+
+
+
+
+.btn-secondary{
+    background-color: transparent;
+    border: 2px solid var(--color1);
+
+}
+
+a{
+  color: inherit;
+}
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 80vw;
+  margin: 2rem auto;
 }
